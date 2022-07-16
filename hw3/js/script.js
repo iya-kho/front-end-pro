@@ -6,6 +6,8 @@ let age = YEAR-Number(yearOfBirth);
 const monthOfBirth = prompt("Your month of birth", "1");
 const dayOfBirth = prompt("Your day of birth", "1");
 
+let zodiac;
+
 if (Number(monthOfBirth) === 1 && Number(dayOfBirth) >= 20 || Number(monthOfBirth) === 2 && Number(dayOfBirth) <= 18){
     zodiac = "Aquarius ♒";
 } else if (Number(monthOfBirth) === 2 && Number(dayOfBirth) >= 19 || Number(monthOfBirth) === 3 && Number(dayOfBirth) <= 20) {
@@ -32,16 +34,14 @@ if (Number(monthOfBirth) === 1 && Number(dayOfBirth) >= 20 || Number(monthOfBirt
     zodiac = "Capricorn ♑";
 }
 
+let isLeap = false;
+
 if (Number(yearOfBirth) % 400 === 0 || (Number(yearOfBirth) % 100 != 0 && Number(yearOfBirth) % 4 === 0)) {
     isLeap = true;
-} else {
-    isLeap = false;
 }
 
 console.log(isLeap)
 
-if (isLeap === true) {
-    document.getElementById("userbio").innerText = "User Bio: " + firstName + " " + lastName + ", " + age + " years old (leap year), " + zodiac
-} else {
-    document.getElementById("userbio").innerText = "User Bio: " + firstName + " " + lastName + ", " + age + " years old, " + zodiac
-}
+let leapYear = isLeap === true ? " (leap year)": ""
+
+document.getElementById("userbio").innerText = "User Bio: " + firstName + " " + lastName + ", " + age + " years old" + leapYear + ", " + zodiac
